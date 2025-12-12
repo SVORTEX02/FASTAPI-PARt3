@@ -1,0 +1,73 @@
+[
+    {
+        "id": 2,
+        "title": "Jaipur",
+        "content": "The Pink City of India, famous for forts, palaces, and cultural heritage.",
+        "comments": [
+            "Amber Fort is stunning!",
+            "Great local shopping experience."
+        ]
+    },
+    {
+        "id": 3,
+        "title": "SwitzerLand",
+        "content": "Hello World bhi nhi h",
+        "comments": [
+            "Nice location to chill out"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Kerala Backwaters",
+        "content": "Peaceful waterways surrounded by coconut trees and houseboat rides.",
+        "comments": [
+            "Houseboat stay was unforgettable!",
+            "Very relaxing environment."
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Ladakh",
+        "content": "High-altitude deserts, monasteries, and breathtaking mountain views.",
+        "comments": [
+            "Pangong Lake is surreal!",
+            "Amazing road trip experience."
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Andaman Islands",
+        "content": "Crystal clear beaches, coral reefs, and amazing marine life.",
+        "comments": [
+            "Snorkeling was insane!",
+            "Loved the peaceful beaches."
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Rishikesh",
+        "content": "Yoga capital of the world, famous for river rafting and peaceful vibes.",
+        "comments": [
+            "River rafting is must-do!",
+            "Nice spiritual vibe."
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Mumbai",
+        "content": "The city that never sleeps \u00e2\u20ac\u201d beaches, Bollywood, and modern lifestyle.",
+        "comments": [
+            "Marine Drive is beautiful.",
+            "Street food was amazing!"
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Spiti Valley",
+        "content": "Best spot to be yourself",
+        "comments": [
+            "Nice location to chill out",
+            "EK baar jao wapis aane ka mann nh krega"
+        ]
+    }
+]
