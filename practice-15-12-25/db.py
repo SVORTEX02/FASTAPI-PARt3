@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker,declarative_base
 
 
 engine = create_engine(
-    "postgresql://postgres:vortex02@localhost:5432/my_dest_db",
+    "postgresql://postgres:vortex02@localhost:5432/mybook",
     echo=True  #  This is what you’re asking about
 )
 

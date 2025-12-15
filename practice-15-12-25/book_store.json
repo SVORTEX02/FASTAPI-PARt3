@@ -1,0 +1,38 @@
+[
+  {
+    "id": 2,
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt",
+    "price": 599,
+    "stock": 0,
+    "publish_year": 1999,
+    "category": "Software Engineering"
+  },
+  {
+    "id": 3,
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "price": 399,
+    "stock": 25,
+    "publish_year": 2018,
+    "category": "Self Help"
+  },
+  {
+    "id": 4,
+    "title": "AAAG MKB",
+    "author": "Amitabh",
+    "price": 900,
+    "stock": 10,
+    "publish_year": 2016,
+    "category": "General"
+  },
+  {
+    "id": 5,
+    "title": "Storror Army",
+    "author": "Cody Schefer",
+    "price": 90.23,
+    "stock": 1,
+    "publish_year": 2028,
+    "category": "parkour"
+  }
+]

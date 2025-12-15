@@ -1,7 +1,7 @@
 [
     {
         "id": 2,
-        "title": "Jaipur",
+        "title": "JK",
         "content": "The Pink City of India, famous for forts, palaces, and cultural heritage.",
         "comments": [
             "Amber Fort is stunning!",
@@ -10,8 +10,8 @@
     },
     {
         "id": 3,
-        "title": "SwitzerLand",
-        "content": "Hello World bhi nhi h",
+        "title": "Hello world",
+        "content": "Nice place",
         "comments": [
             "Nice location to chill out"
         ]
