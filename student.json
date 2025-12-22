@@ -1,0 +1,56 @@
+[
+     {
+          "id": 1,
+          "name": "Cris Rony",
+          "age": 22,
+          "grade": "A",
+          "subjects": [
+               "Football",
+               "Cricket",
+               "Tennis"
+          ]
+     },
+     {
+          "id": 2,
+          "name": "Anjali Sharma",
+          "age": 19,
+          "grade": "B",
+          "subjects": [
+               "English",
+               "History",
+               "Economics"
+          ]
+     },
+     {
+          "id": 3,
+          "name": "Rohit Verma",
+          "age": 21,
+          "grade": "A",
+          "subjects": [
+               "Biology",
+               "Chemistry",
+               "Math"
+          ]
+     },
+     {
+          "id": 4,
+          "name": "Priya Singh",
+          "age": 18,
+          "grade": "C",
+          "subjects": [
+               "Physics",
+               "Chemistry",
+               "English"
+          ]
+     },
+     {
+          "id": 5,
+          "name": "Hari Krishna",
+          "age": 22,
+          "grade": "A",
+          "subjects": [
+               "World",
+               "Pilosopy"
+          ]
+     }
+]

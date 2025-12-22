@@ -13,6 +13,7 @@ class Book(Base):
     stock = Column(Integer, nullable=False)
     publish_year = Column(Integer, nullable=True)  
     category = Column(String(100), nullable=False)
+    full_address = Column(String)
 
     def __repr__(self):
         return f"<Book(id={self.id}, title={self.title}, author={self.author})>"

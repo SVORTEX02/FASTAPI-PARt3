@@ -1,4 +1,4 @@
-from fastapi import FastAPI,HTTPException,Depends
+from fastapi import FastAPI,HTTPException,Depends, Path, Query,Request
 import json
 from pydantic import BaseModel,Field,ValidationError,computed_field,field_validator,model_validator
 from typing import Annotated,Optional
@@ -8,6 +8,7 @@ from fastapi.responses import JSONResponse
 from db import engine,SessionLocal
 from dbmodels import Base
 import dbmodels
+
 from sqlalchemy.orm import Session
 
 dbmodels.Base.metadata.create_all(bind=engine)
@@ -56,6 +57,12 @@ class BookStore(BaseModel):
     def is_expensive(self) -> bool:
         return self.price > 700
         
+    @computed_field
+    @property
+    def is_address(self) -> str:
+        year = self.publish_year if self.publish_year is not None else "NA"
+        return f"{self.author}-{year}-{self.category}"
+
 
 class BookStoreUpdate(BaseModel):
     id: Optional[int] = Field(None, gt=0, description="Unique ID of the book", examples=[1])
@@ -96,18 +103,18 @@ def save_data(data):
         json.dump(data,f,indent=5)
 
 
-# def init_DB():
-#     db = SessionLocal()
-#     data=load_data()
+def init_DB():
+    db = SessionLocal()
+    data=load_data()
     
-#     for d in data:
-#         db_dest = dbmodels.Book(**d)
-#         db.add(db_dest)
+    for d in data:
+        db_dest = dbmodels.Book(**d)
+        db.add(db_dest)
 
-#     db.commit()  
-#     db.close()
+    db.commit()  
+    db.close()
 
-# init_DB()
+init_DB()
 
 def get_db():
     db = SessionLocal()
@@ -124,7 +131,8 @@ def get_all_books(db:Session=Depends(get_db)):
         
 @app.post('/addBookToDB')
 def add_book(book:BookStore,db:Session=Depends(get_db)):
-    new_book_data = book.model_dump(exclude={"is_available", "is_expensive"})
+    new_book_data = book.model_dump(exclude={"is_available", "is_expensive", "is_address"})
+    new_book_data["full_address"] = book.is_address
     db.add(dbmodels.Book(**new_book_data))
     db.commit()
     return book
@@ -220,3 +228,65 @@ def deleteBook(book_id:int):
             return JSONResponse(status_code=200, content={"message": "Book Deleted"})
     
     raise HTTPException(status_code=404, detail="Book Not Found")
+
+
+@app.get("/users/{user_id}")
+def get_user(user_id: int):
+    return {
+        "received_from": "path",
+        "user_id": user_id,
+        "type": str(type(user_id))
+    }
+
+
+@app.get("/products")
+def get_products(
+    name: str | None = None,
+    min_price: int | None = None,
+    max_price: int | None = None
+):
+    return {
+        "name": name,
+        "min_price": min_price,
+        "max_price": max_price
+    }
+
+
+
+
+
+
+
+
+# --------------------------------------------------------------
+@app.get("/getBook/{book_id}")
+def getBoo(book_id:int=Path(...,title="Book Id of Book in my Store",description="Give me in integer value",example='1 or 2 or 3',gt=1)):
+    data = load_data()
+    for i in data:
+        if i['id']==book_id:
+            return {"Book Details":i}
+        else:
+            raise HTTPException(status_code=404,detail="Book ID Not FOund")
+        
+        
+@app.get('/getDetails')
+def getDetail(book_id:int=Query(...,title="Book Id of Book in my Store",description="Give me in integer value",example='1 or 2 or 3',gt=0),
+            title:str=Query(...,title="Title of the book to given here",description="Give me the title of book",example='The Pragmatic Programmer')
+            ):
+    
+    data = load_data()
+    for i in data:
+        if i["id"] == book_id and i["title"] == title:
+            return {"Book Details": i}
+
+    # raise AFTER loop
+    raise HTTPException(status_code=404, detail="Book not found")
+
+
+
+@app.post("/text")
+async def read_text(request: Request):
+    body = await request.body()   
+    return {
+        "text": body.decode()
+    }
