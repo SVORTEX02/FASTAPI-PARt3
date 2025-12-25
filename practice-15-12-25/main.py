@@ -8,6 +8,7 @@ from fastapi.responses import JSONResponse
 from db import engine,SessionLocal
 from dbmodels import Base
 import dbmodels
+from fastapi.security import OAuth2PasswordBearer,OAuth2PasswordRequestForm
 
 from sqlalchemy.orm import Session
 
@@ -278,8 +279,6 @@ def getDetail(book_id:int=Query(...,title="Book Id of Book in my Store",descript
     for i in data:
         if i["id"] == book_id and i["title"] == title:
             return {"Book Details": i}
-
-    # raise AFTER loop
     raise HTTPException(status_code=404, detail="Book not found")
 
 
@@ -290,3 +289,17 @@ async def read_text(request: Request):
     return {
         "text": body.decode()
     }
+
+
+class Credit(BaseModel):
+    name:Annotated[str,...,Field(min_length=2,max_length=30)]
+    password:Annotated[str,...,Field(min_length=2,max_length=14)]
+    
+    
+@app.post("/newdata")
+def user_details(user:Credit):
+    new_info=user.model_dump()
+    print(new_info)
+    return {"message":"Here is the data"}
+
+    
